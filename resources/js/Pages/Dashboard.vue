@@ -40,67 +40,94 @@
                                 <div
                                     v-for="event in events.data"
                                     :key="event.id"
-                                    class="
-                                        flex flex-col
-                                        rounded-lg
-                                        shadow-lg
-                                        overflow-hidden
-                                    "
                                 >
-                                    <div class="flex-shrink-0">
-                                        <img
-                                            class="h-48 w-full object-cover"
-                                            :src="event.file"
-                                            alt=""
-                                        />
-                                        <!-- src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixqx=ilDT4a4YU8&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" -->
-                                    </div>
-                                    <div
-                                        class="
-                                            flex-1
-                                            bg-white
-                                            p-6
-                                            flex flex-col
-                                            justify-between
-                                        "
-                                    >
-                                        <div class="flex-1">
-                                            <a href="#" class="block mt-2">
-                                                <p
-                                                    class="
-                                                        text-xl
-                                                        font-semibold
-                                                        text-gray-900
-                                                    "
-                                                >
-                                                    {{ event.title }}
-                                                </p>
-                                                <p
-                                                    class="
-                                                        mt-3
-                                                        text-base text-gray-500
-                                                    "
-                                                >
-                                                    {{ event.about }}
-                                                </p>
-                                            </a>
-                                        </div>
-                                        <div
-                                            v-if="event.event_date"
-                                            class="mt-6 flex items-center"
+                                    <div>
+                                        <inertia-link
+                                            :href="
+                                                route('events.edit', {
+                                                    event: event.id,
+                                                })
+                                            "
+                                            class="
+                                                flex flex-col
+                                                rounded-lg
+                                                shadow-lg
+                                                overflow-hidden
+                                            "
                                         >
+                                            <div class="flex-shrink-0">
+                                                <img
+                                                    class="
+                                                        h-48
+                                                        w-full
+                                                        object-cover
+                                                    "
+                                                    :src="event.file"
+                                                    alt=""
+                                                />
+                                                <!-- src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&ixqx=ilDT4a4YU8&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1679&q=80" -->
+                                            </div>
                                             <div
                                                 class="
-                                                    flex
-                                                    space-x-1
-                                                    text-sm text-gray-500
+                                                    flex-1
+                                                    bg-white
+                                                    p-6
+                                                    flex flex-col
+                                                    justify-between
                                                 "
                                             >
-                                                <time datetime="2020-03-16">
-                                                    {{ event.event_date }}
-                                                </time>
+                                                <div class="flex-1">
+                                                    <a
+                                                        href="#"
+                                                        class="block mt-2"
+                                                    >
+                                                        <p
+                                                            class="
+                                                                text-xl
+                                                                font-semibold
+                                                                text-gray-900
+                                                            "
+                                                        >
+                                                            {{ event.title }}
+                                                        </p>
+                                                        <p
+                                                            class="
+                                                                mt-3
+                                                                text-base
+                                                                text-gray-500
+                                                            "
+                                                        >
+                                                            {{ event.about }}
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                                <div
+                                                    v-if="event.event_date"
+                                                    class="
+                                                        mt-6
+                                                        flex
+                                                        items-center
+                                                    "
+                                                >
+                                                    <div
+                                                        class="
+                                                            flex
+                                                            space-x-1
+                                                            text-sm
+                                                            text-gray-500
+                                                        "
+                                                    >
+                                                        <time
+                                                            datetime="2020-03-16"
+                                                        >
+                                                            {{
+                                                                event.event_date
+                                                            }}
+                                                        </time>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </inertia-link>
                                     </div>
                                 </div>
                             </div>

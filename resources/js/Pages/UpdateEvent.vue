@@ -13,6 +13,14 @@
             "
         >
             <div class="relative max-w-7xl mx-auto">
+                <div
+                    v-if="eventUpdated"
+                    class="mb-6 p-4 rounded border-green-600 border block"
+                >
+                    <p class="mt-1 text-base text-green-600">
+                        Adventure updated!
+                    </p>
+                </div>
                 <div>
                     <div class="md:grid md:grid-cols-3 md:gap-6">
                         <div class="md:col-span-1">
@@ -25,11 +33,11 @@
                                         text-gray-900
                                     "
                                 >
-                                    Create adventure
+                                    Edit adventure
                                 </h3>
                                 <p class="mt-1 text-sm text-gray-600">
-                                    Fill out the information about your
-                                    adventure here!
+                                    Update the information about your adventure
+                                    here!
                                 </p>
                             </div>
                         </div>
@@ -162,7 +170,24 @@
                                             </p>
                                         </div>
 
-                                        <div
+                                        <div v-show="!form.file">
+                                            <p
+                                                class="
+                                                    block
+                                                    text-sm
+                                                    font-medium
+                                                    text-gray-700
+                                                    mb-1
+                                                "
+                                            >
+                                                Picture
+                                            </p>
+                                            <img
+                                                :src="event.data.file"
+                                                alt=""
+                                            />
+                                        </div>
+                                        <!-- <div
                                             class="
                                                 mx-4
                                                 max-w-lg
@@ -230,7 +255,7 @@
                                                             {{ form.file.name }}
                                                         </p>
                                                         <p class="">
-                                                            Upload file
+                                                            Cargar Archivo
                                                         </p>
                                                         <input
                                                             @input="
@@ -250,7 +275,7 @@
                                                         text-xs text-gray-500
                                                     "
                                                 >
-                                                    PNG o JPG up to 10MB
+                                                    PNG o JPG hasta 10MB
                                                 </p>
                                             </div>
                                         </div>
@@ -260,10 +285,11 @@
                                             class="mx-4 text-red-600 text-sm"
                                         >
                                             {{ form.errors.file }}
-                                        </p>
+                                        </p> -->
                                     </div>
                                     <div
                                         class="
+                                            space-x-2
                                             px-4
                                             py-3
                                             bg-gray-50
@@ -271,6 +297,29 @@
                                             sm:px-6
                                         "
                                     >
+                                        <button
+                                            type="button"
+                                            @click="deleteEvent"
+                                            class="
+                                                inline-flex
+                                                justify-center
+                                                py-2
+                                                px-4
+                                                border
+                                                shadow-sm
+                                                text-sm
+                                                font-medium
+                                                rounded-md
+                                                text-red-600
+                                                border-red-600
+                                                hover:bg-red-300
+                                                focus:outline-none
+                                                focus:ring-2 focus:ring-offset-2
+                                                focus:red-indigo-500
+                                            "
+                                        >
+                                            Delete
+                                        </button>
                                         <button
                                             type="submit"
                                             class="
@@ -292,7 +341,7 @@
                                                 focus:ring-indigo-500
                                             "
                                         >
-                                            Save
+                                            Update
                                         </button>
                                     </div>
                                 </div>
@@ -312,29 +361,47 @@ export default {
     components: {
         AppLayout,
     },
+    props: ["event"],
     data() {
         return {
             form: this.$inertia.form(
                 {
-                    title: "",
-                    event_date: "",
-                    about: "",
+                    _method: "PUT",
+                    title: this.event.data.title,
+                    event_date: this.event.data.event_date,
+                    about: this.event.data.about,
                     file: "",
                 },
                 { key: "eventCreation" }
             ),
+            eventUpdated: false,
         };
     },
 
     methods: {
         submit() {
-            this.form.post(this.route("events.store"), {
-                preserveScroll: true,
-                onSuccess: (page) => {
-                    this.form.reset();
-                    this.form.clearErrors();
-                },
-            });
+            console.log(this.form);
+            this.form.put(
+                this.route("events.update", {
+                    event: this.event.data.id,
+                }),
+                {
+                    preserveScroll: true,
+                    onSuccess: (page) => {
+                        this.eventUpdated = true;
+                    },
+                }
+            );
+        },
+        deleteEvent() {
+            this.form.delete(
+                this.route("events.destroy", {
+                    event: this.event.data.id,
+                }),
+                {
+                    preserveScroll: true,
+                }
+            );
         },
     },
 };

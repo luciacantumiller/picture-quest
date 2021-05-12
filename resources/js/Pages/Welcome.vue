@@ -49,9 +49,14 @@
                             aria-label="Global"
                         >
                             <img
+                                src="/images/shutter.png"
+                                alt="logo"
+                                class="h-8"
+                            />
+                            <!-- <img
                                 class="h-8 w-auto sm:h-10"
                                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                            />
+                            /> -->
 
                             <div class="block md:ml-10 md:pr-4 md:space-x-8">
                                 <inertia-link

@@ -14,16 +14,27 @@
                                     <!-- <jet-application-mark
                                         class="block h-9 w-auto"
                                     /> -->
-                                    <img
+                                    <!-- <img
                                         class="h-8 w-auto sm:h-10"
                                         src="https://www.flaticon.com/svg/vstatic/svg/1831/1831908.svg?token=exp=1619671943~hmac=8bf936e84a839e22baa771004b5439c9"
+                                    /> -->
+                                    <img
+                                        src="/images/shutter.png"
+                                        alt="logo"
+                                        class="h-8"
                                     />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div
-                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex"
+                                class="
+                                    hidden
+                                    space-x-8
+                                    sm:-my-px
+                                    sm:ml-10
+                                    sm:flex
+                                "
                             >
                                 <jet-nav-link
                                     :href="route('events.index')"
@@ -52,7 +63,25 @@
                                         <span class="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition"
+                                                class="
+                                                    inline-flex
+                                                    items-center
+                                                    px-3
+                                                    py-2
+                                                    border border-transparent
+                                                    text-sm
+                                                    leading-4
+                                                    font-medium
+                                                    rounded-md
+                                                    text-gray-500
+                                                    bg-white
+                                                    hover:bg-gray-50
+                                                    hover:text-gray-700
+                                                    focus:outline-none
+                                                    focus:bg-gray-50
+                                                    active:bg-gray-50
+                                                    transition
+                                                "
                                             >
                                                 {{
                                                     $page.props.user
@@ -86,10 +115,23 @@
                                                 $page.props.jetstream
                                                     .managesProfilePhotos
                                             "
-                                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition"
+                                            class="
+                                                flex
+                                                text-sm
+                                                border-2 border-transparent
+                                                rounded-full
+                                                focus:outline-none
+                                                focus:border-gray-300
+                                                transition
+                                            "
                                         >
                                             <img
-                                                class="h-8 w-8 rounded-full object-cover"
+                                                class="
+                                                    h-8
+                                                    w-8
+                                                    rounded-full
+                                                    object-cover
+                                                "
                                                 :src="
                                                     $page.props.user
                                                         .profile_photo_url
@@ -104,7 +146,22 @@
                                         >
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+                                                class="
+                                                    inline-flex
+                                                    items-center
+                                                    px-3
+                                                    py-2
+                                                    border border-transparent
+                                                    text-sm
+                                                    leading-4
+                                                    font-medium
+                                                    rounded-md
+                                                    text-gray-500
+                                                    bg-white
+                                                    hover:text-gray-700
+                                                    focus:outline-none
+                                                    transition
+                                                "
                                             >
                                                 {{ $page.props.user.name }}
 
@@ -127,7 +184,12 @@
                                     <template #content>
                                         <!-- Account Management -->
                                         <div
-                                            class="block px-4 py-2 text-xs text-gray-400"
+                                            class="
+                                                block
+                                                px-4
+                                                py-2
+                                                text-xs text-gray-400
+                                            "
                                         >
                                             Manage Account
                                         </div>
@@ -167,9 +229,23 @@
                         <div class="-mr-2 flex items-center sm:hidden">
                             <button
                                 @click="
-                                    showingNavigationDropdown = !showingNavigationDropdown
+                                    showingNavigationDropdown =
+                                        !showingNavigationDropdown
                                 "
-                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition"
+                                class="
+                                    inline-flex
+                                    items-center
+                                    justify-center
+                                    p-2
+                                    rounded-md
+                                    text-gray-400
+                                    hover:text-gray-500
+                                    hover:bg-gray-100
+                                    focus:outline-none
+                                    focus:bg-gray-100
+                                    focus:text-gray-500
+                                    transition
+                                "
                             >
                                 <svg
                                     class="h-6 w-6"
@@ -180,7 +256,8 @@
                                     <path
                                         :class="{
                                             hidden: showingNavigationDropdown,
-                                            'inline-flex': !showingNavigationDropdown,
+                                            'inline-flex':
+                                                !showingNavigationDropdown,
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -190,7 +267,8 @@
                                     <path
                                         :class="{
                                             hidden: !showingNavigationDropdown,
-                                            'inline-flex': showingNavigationDropdown,
+                                            'inline-flex':
+                                                showingNavigationDropdown,
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -284,7 +362,12 @@
                                 <div class="border-t border-gray-200"></div>
 
                                 <div
-                                    class="block px-4 py-2 text-xs text-gray-400"
+                                    class="
+                                        block
+                                        px-4
+                                        py-2
+                                        text-xs text-gray-400
+                                    "
                                 >
                                     Manage Team
                                 </div>
@@ -313,7 +396,12 @@
 
                                 <!-- Team Switcher -->
                                 <div
-                                    class="block px-4 py-2 text-xs text-gray-400"
+                                    class="
+                                        block
+                                        px-4
+                                        py-2
+                                        text-xs text-gray-400
+                                    "
                                 >
                                     Switch Teams
                                 </div>
@@ -331,7 +419,12 @@
                                                         $page.props.user
                                                             .current_team_id
                                                     "
-                                                    class="mr-2 h-5 w-5 text-green-400"
+                                                    class="
+                                                        mr-2
+                                                        h-5
+                                                        w-5
+                                                        text-green-400
+                                                    "
                                                     fill="none"
                                                     stroke-linecap="round"
                                                     stroke-linejoin="round"

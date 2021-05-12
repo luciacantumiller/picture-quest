@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EventStoreRequest;
+use App\Http\Requests\EventUpdateRequest;
 use App\Http\Resources\EventCollection;
+use App\Http\Resources\EventResource;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,9 +49,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        return Inertia::render('CompleteEvent', [
-            'user' => Auth::user()
-        ]);
+        return Inertia::render(
+            'CompleteEvent'
+        );
     }
 
     /**
@@ -74,17 +76,6 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Event $event)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Event  $event
@@ -92,7 +83,10 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return Inertia::render(
+            'UpdateEvent',
+            ['event' => new EventResource($event)]
+        );
     }
 
     /**
@@ -102,9 +96,16 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventUpdateRequest $request, Event $event)
     {
-        //
+        // dd($request->all());
+        $event->fill([
+            "title" => $request->input('title'),
+            "about" => $request->input('about'),
+            "event_date" => $request->input('event_date'),
+        ])->save();
+
+        return redirect()->route('events.index');
     }
 
     /**
