@@ -59,7 +59,7 @@
                             /> -->
 
                             <div class="block md:ml-10 md:pr-4 md:space-x-8">
-                                <inertia-link
+                                <a
                                     v-if="$page.props.user"
                                     :href="route('events.index')"
                                     class="
@@ -69,9 +69,9 @@
                                     "
                                 >
                                     Events
-                                </inertia-link>
+                                </a>
 
-                                <inertia-link
+                                <a
                                     v-if="!$page.props.user"
                                     :href="route('register')"
                                     class="
@@ -82,9 +82,9 @@
                                     "
                                 >
                                     Register
-                                </inertia-link>
+                                </a>
 
-                                <inertia-link
+                                <a
                                     v-if="!$page.props.user"
                                     :href="route('login')"
                                     class="
@@ -94,7 +94,7 @@
                                     "
                                 >
                                     Log in
-                                </inertia-link>
+                                </a>
                             </div>
                         </nav>
                     </div>
@@ -201,7 +201,7 @@
                     lg:w-full
                     lg:h-full
                 "
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixqx=ilDT4a4YU8&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixqx=ilDT4a4YU8&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
                 alt=""
             />
         </div>

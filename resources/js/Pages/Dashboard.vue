@@ -42,7 +42,7 @@
                                     :key="event.id"
                                 >
                                     <div>
-                                        <inertia-link
+                                        <a
                                             :href="
                                                 route('events.edit', {
                                                     event: event.id,
@@ -127,7 +127,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </inertia-link>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     It is time to start creating new memories
                                     and adventures!
                                 </p>
-                                <inertia-link
+                                <a
                                     :href="route('events.create')"
                                     class="w-full flex justify-center"
                                 >
@@ -182,7 +182,7 @@
                                     >
                                         Create Adventure!
                                     </button>
-                                </inertia-link>
+                                </a>
                             </div>
                         </div>
                     </div>
